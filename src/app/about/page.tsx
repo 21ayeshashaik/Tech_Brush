@@ -64,19 +64,19 @@ const AboutUs: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* Left: Text Content */}
         <div className="flex-1 space-y-6 ml-20 max-w-3xl">
-          <h2 className="font-inter font-normal text-[42px] leading-[50.4px] text-[#062953]">
+          <h2 className="font-inter font-normal md:text-[42px] sm:text-[24px] leading-[50.4px] text-[#062953]">
             Our Values
           </h2>
 
-          <p className="font-inter font-medium text-[32px] leading-[38.4px] text-[#062953]">
+          <p className="font-inter font-medium  md:text-[32px] sm:text-[24px] leading-[38.4px] text-[#062953]">
             Long-term collaboration and trust
           </p>
 
-          <p className="font-inter font-bold text-[31.88px] leading-[38.4px] text-[#833AB4]">
+          <p className="font-inter font-bold md:text-[31.88px] sm:text-[24px] leading-[38.4px] text-[#833AB4]">
             Quick alignment with customer needs
           </p>
 
-          <p className="font-inter font-medium text-[32px] leading-[38.4px] text-[#062953]">
+          <p className="font-inter font-medium md:text-[32px] sm:text-[24px] leading-[38.4px] text-[#062953]">
             Simple solutions to complex problems
           </p>
         </div>
