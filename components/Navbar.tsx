@@ -35,20 +35,32 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
         </div>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex gap-x-4 lg:gap-x-10 items-center">
-          {navLinks.map(({ label, href }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`
-                font-semibold text-xs sm:text-sm md:text-[13px] uppercase tracking-wide hover:text-[#00A69C]
-                ${mounted && pathname === href ? 'text-[#00A69C]' : 'text-gray-700'}
-              `}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
+       <div className="hidden md:flex gap-x-4 lg:gap-x-10 items-center">
+  {navLinks.map(({ label, href }) => {
+    const isActive = mounted && pathname === href;
+    return (
+      <Link
+        key={href}
+        href={href}
+        className="relative group text-xs sm:text-sm md:text-[13px] uppercase font-semibold tracking-wide text-gray-700 hover:text-[#00A69C] transition-colors duration-300"
+      >
+        <span className={`transition-colors duration-300 ${isActive ? 'text-[#00A69C]' : ''}`}>
+          {label}
+        </span>
+        {/* Animated Underline */}
+        <span
+  className={`
+    absolute left-0 -bottom-1 h-[2px] w-full bg-[#9102E0] rounded-full
+    transform transition-transform duration-300 scale-x-0 origin-left
+    group-hover:scale-x-100
+  `}
+/>
+
+      </Link>
+    );
+  })}
+</div>
+
 
         {/* Desktop Contact Button */}
         <div className="hidden md:block">
@@ -77,27 +89,44 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
 
       {/* Mobile Menu Dropdown - Only for mobile */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 bg-black bg-opacity-40 z-40">
-          <div className="absolute top-16 left-0 w-full bg-white px-4 py-4 border-t shadow-lg">
-            {navLinks.map(({ label, href }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`block py-2 text-base font-medium text-gray-800 hover:text-[#00A69C] ${mounted && pathname === href ? 'text-[#00A69C]' : ''}`}
-                onClick={() => setIsOpen(false)}
-              >
-                {label}
-              </Link>
-            ))}
-            <button
-              className="mt-4 w-full bg-[#9102E0] text-white px-4 py-2 rounded-md text-base font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact Us
-            </button>
-          </div>
-        </div>
-      )}
+  <>
+    {/* Overlay */}
+    <div
+      className="fixed inset-0 bg-black bg-opacity-40 z-40"
+      onClick={() => setIsOpen(false)}
+    />
+
+    {/* Mobile Menu Panel */}
+    <div className="fixed top-0 right-0 w-3/4 h-full bg-white z-50 shadow-lg p-6 overflow-y-auto">
+      <button
+        className="mb-4 text-gray-800 font-bold text-lg"
+        onClick={() => setIsOpen(false)}
+      >
+        ✕ Close
+      </button>
+      {navLinks.map(({ label, href }) => (
+        <Link
+          key={href}
+          href={href}
+          onClick={() => setIsOpen(false)}
+          className={`block py-3 text-base font-semibold text-gray-800 hover:text-[#00A69C] ${
+            mounted && pathname === href ? 'text-[#00A69C]' : ''
+          }`}
+        >
+          {label}
+        </Link>
+      ))}
+      <button
+        className="mt-6 w-full bg-[#9102E0] text-white px-4 py-3 rounded-md text-base font-semibold"
+        onClick={() => setIsOpen(false)}
+      >
+        Contact Us
+      </button>
+    </div>
+  </>
+)}
+
+
     </header>
   );
 };

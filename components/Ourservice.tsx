@@ -54,16 +54,19 @@ const OurServicesPage: React.FC = () => {
         {serviceData.map((service, index) => (
           <div
             key={index}
-            className="transition-all duration-300 group rounded-xl bg-white hover:shadow-2xl hover:-translate-y-2 hover:scale-105 hover:bg-gradient-to-br hover:from-[#e0e7ff] hover:to-[#f3e8ff] cursor-pointer"
+            //className="transition-all duration-300 group rounded-xl bg-white hover:shadow-2xl hover:-translate-y-2 hover:scale-105 hover:bg-gradient-to-br hover:from-[#e0e7ff] hover:to-[#f3e8ff] cursor-pointer"
             style={{
-              marginTop: isLargeScreen ? `${(index % 3) * 40}px` : '0px',
+              
+              marginTop: isLargeScreen ? `${(index % 3) * 50}px` : '0px',
             }}
           >
+            
             <ServiceCard
               title={service.title}
               description={service.description}
              
             />
+     
           </div>
         ))}
       </div>

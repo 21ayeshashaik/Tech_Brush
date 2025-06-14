@@ -12,7 +12,7 @@ const milestones = [
   {
     icon: '/location-pin-svgrepo-com.svg',
     number: '15+',
-    label: ' Service Locations',
+    label: 'Service Locations',
   },
   {
     icon: '/globe.svg',
@@ -28,31 +28,44 @@ const milestones = [
 
 const MilestoneSection: React.FC = () => {
   return (
-    <section className="w-full py-16 px-4 md:px-8 bg-white">
-      <h2 className="text-[30px] leading-[36px] font-bold uppercase text-[#062953] text-center font-montserrat mb-8">
+   // <section className="w-full py-8 px-3 sm:px-6 lg:px-16 bg-white">
+      <section className="w-full pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-20 lg:pb-24 px-3 sm:px-6 lg:px-16 bg-white">
+
+      {/* Title */}
+      <h2 className="text-lg sm:text-2xl md:text-3xl font-bold uppercase text-[#062953] text-center font-montserrat mb-3 sm:mb-4">
         Milestones
       </h2>
-    <div className="w-[120px] h-[3px] bg-[#45B795] mx-auto mb-8 rounded-full"></div>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Divider */}
+      <div className="w-14 sm:w-24 h-[3px] bg-[#45B795] mx-auto mb-6 rounded-full"></div>
+
+      {/* Grid */}
+      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
         {milestones.map((milestone, index) => (
           <div
             key={index}
-            className="bg-white/10 rounded-lg p-6 flex flex-col items-center justify-center shadow-md hover:shadow-lg transition"
+            className="rounded-lg p-3 sm:p-5 bg-[#f9f9f9] hover:bg-white shadow transition duration-300 flex flex-col items-center text-center group"
           >
-           <div className="mb-4 text-[#4B92F3] bg-white/20 rounded-full p-4 w-[64px] h-[64px] flex items-center justify-center">
-  <Image
-    src={milestone.icon}
-    alt={milestone.label}
-    width={40}
-    height={40}
-    className="object-contain"
-  />
-</div>
+            {/* Icon */}
+            <div className="mb-2 p-2 sm:p-3 w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full shadow-md flex items-center justify-center transition-transform group-hover:scale-105">
+              <Image
+                src={milestone.icon}
+                alt={milestone.label}
+                width={24}
+                height={24}
+                className="object-contain"
+              />
+            </div>
 
-            
-            <div className="text-xl font-montserrat mb-1 text-purple-500">{milestone.number}</div>
-            <div className="text-2xl text-[#00A69C]/80 text-center font-bold font-montserrat">{milestone.label}</div>
+            {/* Number */}
+            <div className="text-sm sm:text-lg font-bold text-purple-600 mb-1 font-montserrat">
+              {milestone.number}
+            </div>
+
+            {/* Label */}
+            <div className="text-[10px] sm:text-sm text-[#00A69C]/90 font-medium font-montserrat">
+              {milestone.label}
+            </div>
           </div>
         ))}
       </div>

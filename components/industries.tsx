@@ -1,35 +1,56 @@
 'use client';
 
 import React from 'react';
-import { Building2, ShoppingCart, Banknote, Truck, Hospital, PlaneTakeoff, BookOpen, Factory } from 'lucide-react';
+import {
+  Building2,
+  ShoppingCart,
+  Banknote,
+  Truck,
+  Hospital,
+  PlaneTakeoff,
+  BookOpen,
+  Factory,
+} from 'lucide-react';
 
 const industries = [
-  { icon: <Building2 size={20} />, label: 'TECHNOLOGY' },
-  { icon: <ShoppingCart size={20} />, label: 'ECOMMERCE' },
-  { icon: <Banknote size={20} />, label: 'BANKING' },
-  { icon: <Truck size={20} />, label: 'LOGISTIC & SHIPPING' },
-  { icon: <Hospital size={20} />, label: 'HOSPITAL' },
-  { icon: <PlaneTakeoff size={20} />, label: 'TRAVEL' },
-  { icon: <BookOpen size={20} />, label: 'EDUCATION' },
-  { icon: <Factory size={20} />, label: 'MANUFACTURING' },
+  { icon: Building2, label: 'TECHNOLOGY' },
+  { icon: ShoppingCart, label: 'ECOMMERCE' },
+  { icon: Banknote, label: 'BANKING' },
+  { icon: Truck, label: 'LOGISTIC & SHIPPING' },
+  { icon: Hospital, label: 'HOSPITAL' },
+  { icon: PlaneTakeoff, label: 'TRAVEL' },
+  { icon: BookOpen, label: 'EDUCATION' },
+  { icon: Factory, label: 'MANUFACTURING' },
 ];
 
 const HomeIndustriesSection: React.FC = () => {
   return (
-    <section className="py-12 px-4 sm:px-10 bg-gradient-to-r from-teal-500 to-purple-500 text-white">
+    <section className="py-10 px-4 sm:px-6 md:px-8 bg-gradient-to-r from-teal-500 to-purple-500 text-white">
       <div className="max-w-6xl mx-auto text-center">
         {/* Title */}
-        <h2 className="text-3xl font-bold uppercase">Industries</h2>
-        <div className="w-20 h-1 bg-white mx-auto mt-2 mb-8" />
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold uppercase font-montserrat">
+          Industries
+        </h2>
+        <div className="w-16 sm:w-20 h-1 bg-white mx-auto mt-3 mb-8 rounded-full" />
 
-        {/* Grid of industries */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-          {industries.map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center justify-center space-y-2">
-              <div className="text-white">{item.icon}</div>
-              <p className="text-[14px] font-semibold text-center">{item.label}</p>
-            </div>
-          ))}
+        {/* Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 sm:gap-8">
+          {industries.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="flex flex-col items-center justify-center space-y-1 text-white hover:text-yellow-300 transition duration-300"
+              >
+                <div className="p-2 sm:p-3 bg-white/20 rounded-full">
+                  <Icon size={20} className="sm:size-3 md:size-4" />
+                </div>
+                <p className="text-xs sm:text-sm md:text-[15px] font-semibold text-center leading-tight font-montserrat">
+                  {item.label}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

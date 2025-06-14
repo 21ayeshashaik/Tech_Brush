@@ -9,37 +9,45 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const defaultImage = '/services.png';    // Place your image in /public
-  const hoverImage = '/servicesh.png';        // Hover version of the image
+  const defaultImage = '/services.png';
+  const hoverImage = '/servicesh.png';
 
   return (
     <div
-      className="transition-transform hover:-translate-y-2 shadow-md duration-300 flex flex-col items-center text-center p-4 cursor-pointer"
+      className={`w-[247px] h-[280px] rounded-[3px] p-4 cursor-pointer 
+      flex flex-col items-center text-center transition-all duration-700 ease-in-out
+      transform hover:-translate-y-2 hover:scale-105 
+      ${isHovered ? 'bg-gradient-to-b from-[#9747FF] to-[#45B795f0]' : 'bg-[#F8FAFC] shadow'}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       style={{
-        width: '247px',
-        height: '280px',
-        borderRadius: '3px',
-        background: isHovered
-          ? 'linear-gradient(180.17deg, #9747FF 46.97%, rgba(69, 183, 149, 0.94) 99.85%)'
-          : '#F8FAFC',
         boxShadow: isHovered
           ? '1.7px 9.8px 30px 0px #0302324D'
           : '0 1px 3px rgba(0, 0, 0, 0.1)',
-        color: isHovered ? 'white' : '#062953',
+        transition: 'all 0.6s ease-in-out',
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <Image
         src={isHovered ? hoverImage : defaultImage}
         alt="Service icon"
         width={48}
         height={48}
-        className="mb-4"
+        className="mb-4 transition-transform duration-500 ease-in-out"
       />
 
-      <h3 className="text-lg font-semibold mb-2">{title}</h3>
-      <p className="text-sm" style={{ color: isHovered ? 'white' : '#4B5563' }}>
+      <h3
+        className={`text-lg font-semibold mb-2 font-montserrat transition-colors duration-500 ${
+          isHovered ? 'text-white' : 'text-[#062953]'
+        }`}
+      >
+        {title}
+      </h3>
+
+      <p
+        className={`text-sm font-montserrat transition-colors duration-500 ${
+          isHovered ? 'text-white' : 'text-gray-600'
+        }`}
+      >
         {description}
       </p>
     </div>

@@ -22,25 +22,27 @@ const technologies = [
 
 const TechnologySection: React.FC = () => {
   return (
-    <section className="bg-white py-12 px-4 sm:px-10">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Title */}
-        <h2 className="text-3xl font-extrabold text-[#0D0C51] uppercase">Technologies</h2>
-        <div className="w-24 h-1 bg-green-400 mx-auto my-4" />
+    <section className="bg-white py-10 px-4 sm:px-6 md:px-10 lg:px-16">
+      <div className="max-w-7xl mx-auto text-center">
+        {/* Section Title */}
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#0D0C51] uppercase tracking-wide">
+          Technologies
+        </h2>
+        <div className="w-20 h-1 bg-green-400 mx-auto my-4 rounded-full" />
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-10">
+        {/* Technologies Grid */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-6 gap-y-10 mt-10">
           {technologies.map((tech, index) => (
             <div key={index} className="flex flex-col items-center space-y-2">
-              <div className="w-20 h-20 relative">
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20">
                 <Image
                   src={tech.src}
                   alt={tech.name}
                   fill
-                  className="object-contain"
+                  className="object-contain transition-transform duration-300 hover:scale-110"
                 />
               </div>
-    
+  
             </div>
           ))}
         </div>

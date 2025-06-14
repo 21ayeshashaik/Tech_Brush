@@ -9,17 +9,18 @@ const BlogsPage: React.FC = () => {
   return (
     <>
       <Breadcrumb />
-      <div className="bg-white p-4 sm:p-6 md:p-10 font-sans">
-        {/* Page Content Wrapper */}
-        <div className="flex flex-col lg:flex-row relative gap-8">
+      <div className="bg-white px-4 py-8 sm:px-6 md:px-10 font-sans">
+        {/* Responsive layout: Column-reverse on small, row on large */}
+        <div className="flex flex-col-reverse lg:flex-row gap-8">
+
           {/* Blog Section */}
-          <div className="w-full lg:w-[730px] bg-gray-100 shadow rounded-md p-4 mb-8 lg:mb-0">
-            {/* First Blog Post */}
+          <div className="w-full lg:w-[730px] bg-gray-100 shadow rounded-md p-4">
+            {/* First Blog */}
             <div className="mb-10">
               <img
                 src="/blog1.png"
                 alt="Blog Visual 1"
-                className="w-full h-[220px] sm:h-[300px] md:h-[350px] lg:h-[455px] object-cover mb-4 rounded"
+                className="w-full h-[200px] sm:h-[280px] md:h-[330px] lg:h-[455px] object-cover mb-4 rounded"
               />
               <div className="text-base md:text-lg">
                 <h2 className="text-lg md:text-xl font-bold mb-1">
@@ -33,12 +34,12 @@ const BlogsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Second Blog Post */}
+            {/* Second Blog */}
             <div className="mb-10">
               <img
                 src="/blog2.png"
                 alt="Blog Visual 2"
-                className="w-full h-[220px] sm:h-[300px] md:h-[350px] lg:h-[455px] object-cover mb-4 rounded"
+                className="w-full h-[200px] sm:h-[280px] md:h-[330px] lg:h-[455px] object-cover mb-4 rounded"
               />
               <div className="text-base md:text-lg">
                 <h2 className="text-lg md:text-xl font-bold mb-1">
@@ -54,8 +55,8 @@ const BlogsPage: React.FC = () => {
           </div>
 
           {/* Search Bar */}
-          <div className="w-full max-w-full lg:w-[320px] lg:h-[100px] bg-white shadow-md rounded-md p-4 flex flex-col justify-center lg:static absolute left-0 top-full mt-4 lg:mt-0">
-            <label htmlFor="search" className="text-sm text-gray-500 mb-1">Search</label>
+          <div className="w-full lg:w-[320px] bg-white shadow-md rounded-md p-4 h-fit">
+            <label htmlFor="search" className="text-sm text-gray-500 mb-2 block">Search</label>
             <input
               id="search"
               type="text"
@@ -65,7 +66,8 @@ const BlogsPage: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* Testimonials & Footer after all content */}
+
+      {/* Testimonials & Footer */}
       <div className="mt-20">
         <TestimonialsSection />
         <Footer />

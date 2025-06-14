@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const testimonials = [
@@ -25,49 +25,66 @@ const testimonials = [
 ];
 
 const TestimonialsSection: React.FC = () => {
-  const [startIndex, setStartIndex] = useState(0);
-  const testimonialsPerPage = 3;
+  const [index, setIndex] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  // Track window width
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024); // lg breakpoint
+    };
+
+    handleResize(); // initial
+    window.addEventListener('resize', handleResize); // listen on resize
+    return () => window.removeEventListener('resize', handleResize); // cleanup
+  }, []);
 
   const handleNext = () => {
-    setStartIndex((prev) =>
-      (prev + testimonialsPerPage) % testimonials.length
-    );
+    setIndex((prev) => (prev + 1) % testimonials.length);
   };
 
-  const currentTestimonials = testimonials.slice(
-    startIndex,
-    startIndex + testimonialsPerPage
-  ).length < testimonialsPerPage
-    ? [
-        ...testimonials.slice(startIndex),
-        ...testimonials.slice(0, testimonialsPerPage - testimonials.slice(startIndex).length),
-      ]
-    : testimonials.slice(startIndex, startIndex + testimonialsPerPage);
+  const getVisibleTestimonials = () => {
+    if (isLargeScreen) {
+      return [
+        testimonials[index % testimonials.length],
+        testimonials[(index + 1) % testimonials.length],
+        testimonials[(index + 2) % testimonials.length],
+      ];
+    } else {
+      return [testimonials[index % testimonials.length]];
+    }
+  };
+
+  const currentTestimonials = getVisibleTestimonials();
 
   return (
     <section
       className="relative w-full py-12 px-4 md:px-8"
       style={{ background: 'linear-gradient(0deg, #00A69C 0%, #2D71CE 100%)' }}
     >
-      <h2 className="text-[30px] font-bold uppercase text-white font-montserrat text-center mb-10">
+      <h2 className="text-[24px] sm:text-[30px] font-bold uppercase text-white font-montserrat text-center mb-10">
         Testimonials
       </h2>
 
-      {/* Testimonials Cards */}
-      <div className="max-w-[1140px] mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {currentTestimonials.map((testimonial, index) => (
+      {/* Testimonials */}
+      <div className="max-w-[1140px] mx-auto flex flex-wrap justify-center gap-6">
+        {currentTestimonials.map((testimonial, i) => (
           <div
-            key={index}
-            className="relative text-[#062953B2] bg-white rounded-md p-4 shadow-md"
-            style={{ width: '380px', height: '280px' }}
+            key={i}
+            className="relative bg-white text-[#062953B2] rounded-md p-4 shadow-md w-full sm:w-[80%] lg:w-[360px] min-h-[280px] flex flex-col"
           >
-            {/* Top Decorative Image */}
-            <div className="absolute top-[12.5px] left-[-2.5px] w-[358.33px] h-[24px]">
-              <Image src="/star.png" alt="Banner" fill className="object-cover rounded-t-md" />
+            {/* Top Banner */}
+            <div className="absolute top-3 left-2 w-[calc(100%-16px)] h-6">
+              <Image
+                src="/star.png"
+                alt="Banner"
+                fill
+                className="object-cover rounded-t-md"
+              />
             </div>
 
-            {/* Profile Section */}
-            <div className="flex items-center mt-10 ml-4 gap-4">
+            {/* Profile Info */}
+            <div className="flex items-center mt-10 gap-4 px-2">
               <div className="w-[60px] h-[60px] rounded-full overflow-hidden">
                 <Image
                   src="/user.png"
@@ -78,25 +95,18 @@ const TestimonialsSection: React.FC = () => {
                 />
               </div>
               <div>
-                <div className="text-[16px] leading-[17.6px] font-bold font-montserrat">
-                  {testimonial.name}
-                </div>
-                <div className="text-sm text-[#062953B2]/80 font-montserrat">
-                  {testimonial.role}
-                </div>
+                <div className="text-base font-bold font-montserrat">{testimonial.name}</div>
+                <div className="text-sm text-[#062953B2]/80 font-montserrat">{testimonial.role}</div>
               </div>
             </div>
 
             {/* Message */}
-            <p
-              className="mt-4 text-[15px] leading-[20.7px] px-4 font-light font-montserrat"
-              style={{ fontWeight: 100 }}
-            >
+            <p className="mt-4 text-[15px] leading-[20.7px] px-2 font-light font-montserrat">
               “{testimonial.message}”
             </p>
 
-            {/* Bottom Right Image */}
-            <div className="absolute bottom-[10px] right-[10px] w-[63.6px] h-[33.26px]">
+            {/* Bottom Right Decoration */}
+            <div className="absolute bottom-[10px] right-[10px] w-[60px] h-[30px]">
               <Image
                 src="/TESTIMONIAL.png"
                 alt="Decoration"
@@ -108,8 +118,8 @@ const TestimonialsSection: React.FC = () => {
         ))}
       </div>
 
-      {/* ⏩ NEXT Button (Fixed Position) */}
-      <div className="absolute top-[20px] right-[40px]">
+      {/* Next Button */}
+      <div className="absolute top-[20px] right-[20px] sm:right-[40px]">
         <button
           onClick={handleNext}
           className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center hover:bg-gray-200 transition"
@@ -118,8 +128,8 @@ const TestimonialsSection: React.FC = () => {
           <Image
             src="/Button.png"
             alt="Next"
-            width={80}
-            height={80}
+            width={40}
+            height={40}
             className="object-contain"
           />
         </button>

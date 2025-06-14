@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
 const GetInTouchPage: React.FC = () => {
-  return(
-  <section className="w-full px-4 py-8 flex flex-col lg:flex-row items-center justify-center gap-10 bg-[#F3F3F3]">
+  return (
+    <section className="w-full px-4 sm:px-6 lg:px-20 py-8 sm:py-12 lg:py-16 flex flex-col lg:flex-row items-center justify-center gap-10 bg-[#F3F3F3]">
+      
+      {/* Mobile-Only Heading */}
+      <h2 className="block lg:hidden font-montserrat font-bold text-[28px] sm:text-[30px] leading-[36px] uppercase text-[#062953] text-center">
+        GET IN TOUCH
+      </h2>
+
       {/* Form Section */}
-      <div className="w-[477px] h-[485px] bg-white rounded-[3px] shadow-lg p-6 space-y-4">
-        <p className='text-center font-bold text-[#062953]'>Share your query and contact</p>
+      <div className="w-full max-w-md bg-white rounded-[3px] shadow-lg p-6 sm:p-8 space-y-4">
+        <p className="text-center font-bold text-[#062953] text-lg">Share your query and contact</p>
         <input
           type="text"
           placeholder="Name"
@@ -31,22 +37,22 @@ const GetInTouchPage: React.FC = () => {
         </button>
       </div>
 
-      {/* Heading and Image Section */}
-      <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
-       <h2 className="font-montserrat font-bold text-[30px] leading-[36px] uppercase text-[#062953] mb-6 pl-8 lg:pl-20">
-  GET IN TOUCH
-</h2>
-
-         <div className="w-[120px] h-[3px] bg-[#45B795] mx-auto mb-8 rounded-full"></div>
+      {/* Desktop-only Heading and Image */}
+      <div className="hidden lg:flex flex-col items-start text-left">
+        <h2 className="font-montserrat font-bold text-[28px] sm:text-[30px] leading-[36px] uppercase text-[#062953] mb-6 pl-8">
+          GET IN TOUCH
+        </h2>
+        <div className="w-[120px] h-[3px] bg-[#45B795] mb-8 rounded-full ml-8"></div>
         <Image
-          src="/getintouch.png" // Replace with your image path
-          alt="Properties"
+          src="/getintouch.png"
+          alt="Get In Touch"
           width={400}
           height={300}
-          className=""
+          className="w-full max-w-sm ml-8"
         />
       </div>
-    </section> )
+    </section>
+  );
 };
 
-export default  GetInTouchPage;
+export default GetInTouchPage;
