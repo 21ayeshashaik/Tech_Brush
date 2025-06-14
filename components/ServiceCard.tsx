@@ -11,7 +11,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, Icon }) =
 
   return (
     <div
-      className={` transition-transform hover:-translate-y-2  duration-300 flex flex-col items-center text-center p-4 cursor-pointer`}
+      className={` transition-transform hover:-translate-y-2 shadow-md duration-300 flex flex-col items-center text-center p-4 cursor-pointer`}
       style={{
         width: '247px',
         height: '280px',

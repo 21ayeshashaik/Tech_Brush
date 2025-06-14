@@ -5,13 +5,12 @@ import Image from 'next/image';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative w-full h-[567px] bg-cover bg-center" style={{ backgroundImage: "url('/footer.png')" }}>
+    <footer className="relative w-full min-h-[400px] bg-cover bg-center" style={{ backgroundImage: "url('/footer.png')" }}>
       {/* Overlay Color */}
       <div className="absolute inset-0 bg-[#2F3045E5] z-0" />
 
       {/* Footer Content */}
-      <div className="relative z-10 max-w-[1323px] ml-30 mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-10 text-white font-montserrat">
-
+      <div className="relative z-10 ml-20 max-w-[1323px] mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-10 text-white font-montserrat">
         {/* About */}
         <div>
           <h3 className="text-xl font-bold mb-4">About</h3>
@@ -25,7 +24,6 @@ const Footer: React.FC = () => {
             <li>Fraud Alert</li>
           </ul>
         </div>
-
         {/* Services */}
         <div>
           <h3 className="text-xl font-bold mb-4">Services</h3>
@@ -41,7 +39,6 @@ const Footer: React.FC = () => {
             <li>More +</li>
           </ul>
         </div>
-
         {/* Connect With Us */}
         <div>
           <h3 className="text-xl font-bold mb-4">Connect with us</h3>
@@ -59,12 +56,12 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Logo at Bottom */}
-      <div className="relative z-10 flex ml-30">
+      <div className="relative z-10 flex justify-start mt-5 ml-10">
         <Image
-          src="/TechBrush(2).png" // Your actual logo here
+          src="/TechBrush(2).png"
           alt="TechBrush Logo"
           width={180}
-          height={40}
+          height={180}
         />
       </div>
     </footer>

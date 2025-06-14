@@ -29,7 +29,7 @@ const HomeSection: React.FC = () => {
 
       {/* ✅ Decorative Dots */}
       <div
-        className="absolute top-0 left-0 w-[172px] h-[160px] z-30"
+        className="absolute top-[18px] left-[-40px] w-[172px] h-[160px] z-30"
         style={{
          
           borderRadius: '8px',

@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
       className={`w-full bg-white rounded-md shadow-sm px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4 ${className}`}
     >
       {/* Left: Social Icons */}
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap ml-15 items-center gap-3">
         <img src="/facebook-svgrepo-com.svg" alt="Facebook" className="w-5 h-5 sm:w-6 sm:h-6" />
         <img src="/twitter-svgrepo-com.svg" alt="Twitter" className="w-5 h-5 sm:w-6 sm:h-6" />
         <img src="/linkedin-svgrepo-com.svg" alt="LinkedIn" className="w-5 h-5 sm:w-6 sm:h-6" />
