@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface ServiceCardProps {
   title: string;
   description: string;
-  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, Icon }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, description }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const defaultImage = '/services.png';    // Place your image in /public
+  const hoverImage = '/servicesh.png';        // Hover version of the image
 
   return (
     <div
-      className={` transition-transform hover:-translate-y-2 shadow-md duration-300 flex flex-col items-center text-center p-4 cursor-pointer`}
+      className="transition-transform hover:-translate-y-2 shadow-md duration-300 flex flex-col items-center text-center p-4 cursor-pointer"
       style={{
         width: '247px',
         height: '280px',
@@ -27,7 +30,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, Icon }) =
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Icon className="w-12 h-12 mb-4" color={isHovered ? 'white' : '#9747FF'} />
+      <Image
+        src={isHovered ? hoverImage : defaultImage}
+        alt="Service icon"
+        width={48}
+        height={48}
+        className="mb-4"
+      />
+
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
       <p className="text-sm" style={{ color: isHovered ? 'white' : '#4B5563' }}>
         {description}

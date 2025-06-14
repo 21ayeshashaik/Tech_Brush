@@ -62,7 +62,7 @@ const OurServicesPage: React.FC = () => {
             <ServiceCard
               title={service.title}
               description={service.description}
-              Icon={service.icon}
+             
             />
           </div>
         ))}
