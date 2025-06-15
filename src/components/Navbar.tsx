@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
-
+import Image from 'next/image';
 interface NavbarProps {
   className?: string;
 }
@@ -27,11 +27,20 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
 
   return (
     <header className={`w-full bg-white shadow-md relative z-50 ${className}`}>
-      <nav className="h-16 md:h-[104px] px-4 md:px-6 flex items-center justify-between">
+      <nav className="h-16 md:h-[100px] px-4 md:px-6 flex items-center justify-between">
         
         {/* Logo */}
         <div className="p-2 md:p-3">
-          <img src="/TechBrush.png" alt="Logo" className="h-30 sm:h-20 md:h-47 w-auto" />
+        <Image
+  src="/TechBrush.png"
+  alt="Logo"
+  width={140}
+  height={140}
+  className="h-16 w-auto sm:h-20 md:h-24 lg:h-28 xl:h-32"
+  priority
+/>
+
+
         </div>
 
         {/* Desktop Nav Links */}

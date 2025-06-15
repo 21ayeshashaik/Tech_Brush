@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import TestimonialsSection from '../../../components/Testimonials';
-import Footer from '../../../components/Footer';
-import Breadcrumb from '../../../components/Breadcrumb';
+import Image from 'next/image';
+import TestimonialsSection from '@/components/Testimonials';
+import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const BlogsPage: React.FC = () => {
   return (
@@ -17,11 +18,15 @@ const BlogsPage: React.FC = () => {
           <div className="w-full lg:w-[730px] bg-gray-100 shadow rounded-md p-4">
             {/* First Blog */}
             <div className="mb-10">
-              <img
-                src="/blog1.png"
-                alt="Blog Visual 1"
-                className="w-full h-[200px] sm:h-[280px] md:h-[330px] lg:h-[455px] object-cover mb-4 rounded"
-              />
+              <div className="w-full h-[200px] sm:h-[280px] md:h-[330px] lg:h-[455px] relative mb-4 rounded overflow-hidden">
+                <Image
+                  src="/blog1.png"
+                  alt="Blog Visual 1"
+                  fill
+                  className="object-cover rounded"
+                  priority
+                />
+              </div>
               <div className="text-base md:text-lg">
                 <h2 className="text-lg md:text-xl font-bold mb-1">
                   What is Offshore Outsourcing Services: A Complete Guide
@@ -36,11 +41,14 @@ const BlogsPage: React.FC = () => {
 
             {/* Second Blog */}
             <div className="mb-10">
-              <img
-                src="/blog2.png"
-                alt="Blog Visual 2"
-                className="w-full h-[200px] sm:h-[280px] md:h-[330px] lg:h-[455px] object-cover mb-4 rounded"
-              />
+              <div className="w-full h-[200px] sm:h-[280px] md:h-[330px] lg:h-[455px] relative mb-4 rounded overflow-hidden">
+                <Image
+                  src="/blog2.png"
+                  alt="Blog Visual 2"
+                  fill
+                  className="object-cover rounded"
+                />
+              </div>
               <div className="text-base md:text-lg">
                 <h2 className="text-lg md:text-xl font-bold mb-1">
                   What are the Benefits of UI/UX Design?

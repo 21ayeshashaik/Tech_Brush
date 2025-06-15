@@ -120,3 +120,15 @@
     @apply bg-background text-foreground;
   }
 }
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scrollUp {
+  animation: scrollUp 10s linear infinite alternate;
+}

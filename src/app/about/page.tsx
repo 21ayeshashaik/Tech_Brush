@@ -1,14 +1,14 @@
 'use client';
-
+ import { useState } from 'react';
 import React from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules'; 
-import ProfileCard from '../../../components/ProfileCard';
-import GetInTouchPage from '../../../components/getintouch';
-import Footer from '../../../components/Footer';
-import Breadcrumb from '../../../components/Breadcrumb';
+import ProfileCard from '@/components/ProfileCard';
+import GetInTouchPage from '@/components/getintouch';
+import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const logos = [
   '/samsung.png',
@@ -38,22 +38,52 @@ const leadershipData = [
     reversed: true
   }
 ];
-
 const AboutUs: React.FC = () => {
-  return (
+
+const [expandedLeaders, setExpandedLeaders] = useState<boolean[]>(
+  leadershipData.map(() => false)
+);
+
+
+const toggleShowMore = (index: number) => {
+  setExpandedLeaders((prev) =>
+    prev.map((val, i) => (i === index ? !val : val))
+  );
+};
+
+
+   const [showMore, setShowMore] = useState(false);
+
+  const fullText = `Welcome to TechBrush, Your Trusted Partner for Software Quality Assurance Testing Services.
+
+Since 2005, TechBrush has been setting standards for quality assurance. We know you’ve got great products in mind, and we love making them possible. That’s why we break your developers’ hearts. You may not love us for what we find, but you will surely love us for what we do.
+
+As a quality assurance software testing company, you can rest assured that your software products will meet and exceed industry standards for quality. We are committed to delivering error-free, reliable, and high-performing products that delight your user experience and enhance your business reputation.`;
+const shortText = fullText.slice(0, 300); 
+return (
     <>
       <Breadcrumb />
       <section className=" md:px-8 w-full py-12 px-6 sm:px-10 lg:px-20 bg-white">
 
         {/* Intro */}
-        <div className="max-w-4xl mx-auto text-center mb-12">
-          <p className="text-[#221763] font-normal text-[18px] sm:text-[20px] md:text-[24px] leading-relaxed font-ibm">
-            Welcome to <strong>Crestech</strong>, Your Trusted Partner for Software Quality Assurance Testing Services.<br /><br />
-          Since 2005, Crestech has been setting standards for quality assurance. We know you’ve got great products in mind, and we love making them possible. That’s why we break your developers’ hearts.
-          You may not love us for what we find, but you will surely love us for what we do.<br /><br />
-          As a quality assurance software testing company, you can rest assured that your software products will meet and exceed industry standards for quality. We are committed to delivering error-free, reliable, and high-performing products that delight your user experience and enhance your business reputation.
-          </p>
-        </div>
+       <div className="max-w-4xl mx-auto text-center mb-12">
+  <p className="text-[#221763] font-normal text-[18px] sm:text-[20px] md:text-[24px] leading-relaxed font-ibm whitespace-pre-line">
+    {/* Full text on md+ screens */}
+    <span className="hidden md:inline">{fullText}</span>
+
+    {/* Toggle text + button on small screens */}
+    <span className="inline md:hidden">
+      {showMore ? fullText : shortText + '...'}
+      <button
+        onClick={() => setShowMore(!showMore)}
+        className="text-[#833AB4] underline font-semibold inline ml-2"
+      >
+        {showMore ? 'Read Less' : 'Read More'}
+      </button>
+    </span>
+  </p>
+</div>
+
 
         {/* Our Values Section */}
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
@@ -98,14 +128,14 @@ const AboutUs: React.FC = () => {
           >
             {logos.map((logo, index) => (
               <SwiperSlide key={index} className="flex justify-center items-center">
-                <Image src={logo} alt={`Client ${index}`} width={80} height={80} className="object-contain" />
+                <Image src={logo} alt={`Client ${index}`} width={80} height={80} className="object-contain h-auto" />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
 
         {/* Buttons Section */}
-        <div className="mt-12 flex flex-col md:flex-row justify-center items-center gap-6">
+        <div className="mt-16 flex flex-col md:flex-row justify-center items-center gap-6">
           <button className="bg-gradient-to-r from-[#247CC4] to-[#059FA2] text-white font-semibold px-6 py-3 rounded-full w-[220px] transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
             See success stories
           </button>
@@ -118,44 +148,88 @@ const AboutUs: React.FC = () => {
         <h3 className="text-[28px] md:text-[42px] text-center font-semibold text-[#062953] mt-20">
           Join us on our journey
         </h3>
-        <div className="mt-6 flex flex-col md:flex-row justify-center items-center gap-6">
-          <button className="bg-gradient-to-r from-[#247CC4] to-[#059FA2] text-white font-semibold px-6 py-3 mb-10 rounded-full w-[220px] transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
-            Join the team
-          </button>
-          
-          <button className="border border-[#833AB4] text-[#833AB4] font-semibold px-6 py-3 rounded-full w-[190px]bg-gradient-to-r from-[#247CC4] to-[#059FA2]   transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
-            Get in touch
-          </button>
-        </div>
+       <div className="mt-16 flex flex-row justify-center items-center gap-6 flex-wrap">
+  <button className="bg-gradient-to-r from-[#247CC4] to-[#059FA2] text-white font-semibold px-6 py-3 mb-10 rounded-full w-[220px] transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
+    Join the team
+  </button>
+  <button className="border border-[#833AB4] text-[#833AB4] font-semibold px-6 py-3 mb-10 rounded-full w-[220px] transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
+    Get in touch
+  </button>
+</div>
+
 
         {/* Leadership Section */}
         <h2 className="text-[28px] md:text-[42px] text-center font-inter font-semibold text-[#062953] mt-20">
           A note from our leadership
         </h2>
-        <div className="mt-12 space-y-16">
-          {leadershipData.map((leader, index) => (
-            <div
-              key={index}
-              className={`flex flex-col md:flex-row items-center gap-10 px-4 ${
-                leader.reversed ? 'md:flex-row-reverse' : ''
-              }`}
-            >
-              <div className="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] rounded-full overflow-hidden">
-                <Image src={leader.image} alt={leader.name} width={300} height={300} className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-[#833AB4] font-semibold text-[20px] sm:text-[24px] mb-2">{leader.name}</h3>
-                <p className="text-[#062953] text-[16px] sm:text-[18px] font-semibold">{leader.title}</p>
-                <p className="text-[#4A4A4A] text-[14px] sm:text-[16px] whitespace-pre-line font-normal leading-6 max-w-3xl mt-2">
-                  {leader.description}
-                </p>
-                <a href={leader.linkedin} target="_blank" rel="noopener noreferrer">
-                  <Image src="/linkedin-svgrepo-com.svg" alt="LinkedIn" width={24} height={24} />
-                </a>
-              </div>
-            </div>
-          ))}
+      <div className="mt-12 space-y-16">
+  {leadershipData.map((leader, index) => {
+    const isExpanded = expandedLeaders[index];
+    const charLimit = 150;
+    const isLongText = leader.description.length > charLimit;
+    const shortText = leader.description.slice(0, charLimit);
+
+    return (
+      <div
+        key={index}
+        className={`flex flex-col md:flex-row items-center gap-10 px-4 ${
+          leader.reversed ? 'md:flex-row-reverse' : ''
+        }`}
+      >
+        <div className="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] rounded-full overflow-hidden">
+          <Image
+            src={leader.image}
+            alt={leader.name}
+            width={300}
+            height={300}
+            className="w-full h-full object-cover"
+          />
         </div>
+
+        <div className="flex-1">
+          <h3 className="text-[#833AB4] font-semibold text-[20px] sm:text-[24px] mb-2">
+            {leader.name}
+          </h3>
+          <p className="text-[#062953] text-[16px] sm:text-[18px] font-semibold">
+            {leader.title}
+          </p>
+
+          {/* Full description on md+ */}
+          <p className="hidden md:block text-[#4A4A4A] text-[14px] sm:text-[16px] whitespace-pre-line font-normal leading-6 max-w-3xl mt-2">
+            {leader.description}
+          </p>
+
+          {/* Collapsible description on mobile */}
+          <div className="block md:hidden">
+            <p className="text-[#4A4A4A] text-[14px] sm:text-[16px] whitespace-pre-line font-normal leading-6 max-w-3xl mt-2">
+              {isExpanded || !isLongText ? leader.description : `${shortText}...`}
+              {isLongText && (
+              <button
+                className="text-[#833AB4] text-sm mt-2 underline"
+                onClick={() => toggleShowMore(index)}
+              >
+                {isExpanded ? 'Read Less' : 'Read More'}
+              </button>
+            )}
+            </p>
+            
+          </div>
+
+          <a href={leader.linkedin} target="_blank" rel="noopener noreferrer">
+            <Image
+              src="/linkedin-svgrepo-com.svg"
+              alt="LinkedIn"
+              width={24}
+              height={24}
+              className="mt-3"
+            />
+          </a>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
       </section>
 
       {/* Contact & Footer */}

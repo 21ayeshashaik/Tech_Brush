@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
-import GetInTouchPage from '../../../components/getintouch';
-import TestimonialsSection from '../../../components/Testimonials';
-import Footer from '../../../components/Footer';
-import Breadcrumb from '../../../components/Breadcrumb';
+import GetInTouchPage from '@/components/getintouch';
+import TestimonialsSection from '@/components/Testimonials';
+import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const portfolioImages = [
   '/portifio1.png',

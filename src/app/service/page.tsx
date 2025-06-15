@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import OurServicesPage from '../../../components/Ourservice';
-import Breadcrumb from '../../../components/Breadcrumb';
-import Footer from '../../../components/Footer';
+import Image from 'next/image';
+import OurServicesPage from '@/components/Ourservice';
+import Breadcrumb from '@/components/Breadcrumb';
+import Footer from '@/components/Footer';
 
 const ServicesPage: React.FC = () => {
   return (
@@ -28,7 +29,13 @@ const ServicesPage: React.FC = () => {
               'Digital Marketing',
             ].map((service, index) => (
               <div key={index} className="flex items-center gap-2">
-                <img src="/service.png" alt="Service Icon" className="w-6 h-6 object-contain" />
+                <Image
+                  src="/service.png"
+                  alt="Service Icon"
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
                 <span>{service}</span>
               </div>
             ))}
@@ -42,7 +49,13 @@ const ServicesPage: React.FC = () => {
             }}
           >
             <div className="flex flex-col items-center">
-              <img src="/Vector.png" alt="Discovery Session" className="w-[100px] h-[100px] mb-8" />
+              <Image
+                src="/Vector.png"
+                alt="Discovery Session"
+                width={100}
+                height={100}
+                className="mb-8"
+              />
               <h2 className="text-[22px] md:text-[24px] leading-[30px] text-center font-semibold">
                 Schedule a Discovery Session <br /> with our Team
               </h2>

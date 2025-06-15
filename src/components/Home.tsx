@@ -52,33 +52,45 @@ const HomeSection: React.FC = () => {
           We provide full-cycle software development service encompassing planning, requirements definition, 
           design and prototyping, software development, testing, deployment and application maintenance.
         </p>
-        <button className="w-[141px] h-[35px] rounded-[3px] bg-white text-[#9102E0] font-bold text-[16px] leading-[21px] uppercase hover:bg-opacity-90 transition-all">
-          Know More
-        </button>
+        <button
+  className="w-[141px] h-[35px] rounded-[3px] bg-white text-[#9102E0] font-bold text-[16px] leading-[21px] uppercase 
+             hover:bg-[#9102E0] hover:text-white 
+             active:scale-95 
+             focus:outline-none focus:ring-2 focus:ring-[#9102E0] focus:ring-offset-2 
+             transition-all duration-300 ease-in-out shadow-md"
+>
+  Know More
+</button>
+
       </div>
 
-      {/* ✅ Image Frame Section */}
-      <div className="relative w-full max-w-full sm:max-w-[600px] lg:max-w-[840px] h-[400px] sm:h-[500px] md:h-[600px] lg:h-[674px] rounded-lg shadow-md overflow-hidden">
-        {/* Background Frame Image */}
+     
+ <div className="relative w-full max-w-full sm:max-w-[600px] lg:max-w-[840px] h-[400px] sm:h-[500px] md:h-[600px] lg:h-[674px] rounded-lg overflow-hidden">
+  <Image
+    src="/35ba53e0fa15bd1ed75db22ffbb515616d3db6f8.png"
+    alt="Background Frame"
+    fill
+    className="object-cover"
+  />
+
+  <div className="relative z-10 w-full h-full flex justify-center pt-[80px] sm:pt-[100px] md:pt-[120px] lg:pt-[150px] overflow-hidden">
+    <div className="h-[200px] w-[310px] sm:h-[250px] sm:w-[388px] md:h-[300px] md:w-[465px] lg:h-[337px] lg:w-[522px] relative overflow-hidden rounded-[10px] shadow-lg">
+      <div className="absolute top-0 left-0 w-full h-full animate-scrollUp">
         <Image
-          src="/35ba53e0fa15bd1ed75db22ffbb515616d3db6f8.png"
-          alt="Background Frame"
-          fill
-          className="object-cover"
+          src="/Premium Fashion Website Design Ideas for Men’s E-Commerce.png"
+          alt="Overlay"
+          width={1000}
+          height={1600}
+          className="w-full object-cover"
+          priority
         />
-        {/* Overlay Image */}
-        <div className="relative z-10 w-full h-full flex justify-center pt-[80px] sm:pt-[100px] md:pt-[120px] lg:pt-[150px]">
-          <div className="h-[200px] w-[310px] sm:h-[250px] sm:w-[388px] md:h-[300px] md:w-[465px] lg:h-[337px] lg:w-[522px] relative overflow-hidden rounded-[10px] shadow-lg">
-            <Image
-              src="/Premium Fashion Website Design Ideas for Men’s E-Commerce.png"
-              alt="Overlay"
-              fill
-              className="object-cover object-top"
-              priority
-            />
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+
       
     </section>
     <OurServicesPage/>
